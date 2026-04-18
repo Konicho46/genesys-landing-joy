@@ -1,12 +1,9 @@
-import donny from "@/assets/tim-genesys-2.png";
+import donny from "@/assets/about/founder.png";
 
 const AboutLeader = () => {
   return (
     <section className="py-20 lg:py-28 bg-hex-pattern">
       <div className="container mx-auto px-4 lg:px-8">
-        <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-10">
-          Summary Executive
-        </p>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="font-display text-3xl lg:text-4xl font-bold">
@@ -17,21 +14,7 @@ const AboutLeader = () => {
             </p>
             <div className="space-y-4 mt-6 text-muted-foreground text-sm lg:text-base leading-relaxed">
               <p>
-                Donny Susanto Witono is the visionary founder and managing director of PT
-                Genesys Integrated Indonesia. With over 15 years of experience in the technology
-                and software industry, Donny has led the company from a small startup to one of
-                the most recognized IT solution providers in Eastern Indonesia.
-              </p>
-              <p>
-                Under his leadership, Genesys has successfully delivered hundreds of projects
-                ranging from enterprise resource planning systems to cutting-edge mobile
-                applications and AI-powered tools. His passion for technology and business
-                transformation drives the company's innovation-first culture.
-              </p>
-              <p>
-                Donny holds a degree in Computer Science and has been a speaker at numerous
-                national technology conferences, advocating for digital transformation across
-                industries in Indonesia.
+                Smart leader with expertise of analytical skill, system and project rollout, cisco based networking and windows server infrastructure. Recognized for achieving results by re-engineering information flow to optimize business system, utilization of reporting technologies to accelerate valuable information generation, and effective resource allocation to drive optimum IS performance.
               </p>
             </div>
           </div>

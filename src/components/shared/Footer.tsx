@@ -1,23 +1,23 @@
-import logo from "@/assets/logo-genesys-black.png";
+import logo from "@/assets/logos/logo-genesys-black.png";
 
 const solutions = [
   "Enterprise Resource Planning",
   "Supply Chain Management",
   "Human Resource Management",
   "Customer Relationship Management",
-  "Hospital IT Bridge",
-  "Insurance Bridge System",
+  "Internet of Things",
+  "Hardware & Infrastructure",
   "Software as a Service",
 ];
 
 const locations = [
   {
-    title: "HEAD OFFICE",
-    body: "Graha Pena, 11th Floor, Jl. Ahmad Yani No. 88, Surabaya",
+    title: "MAIN OFFICE",
+    body: "Graha Pena Lt. 15 Ruang 1503, Jl. Ahmad Yani No. 88, Surabaya",
   },
   {
     title: "DEVELOPMENT OFFICE",
-    body: "Jl. Padang Asri Boulevard No. 12, Surabaya",
+    body: "Jl. Pucang Anom Timur III No. 12-16, Surabaya",
   },
 ];
 
@@ -102,9 +102,11 @@ const Footer = () => {
               Contact
             </h4>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              partnership@genesys-id.com
+              marketing@genesysindonesia.com
               <br />
-              +62 (0)31 555 7788
+              +62 817-373-851 (Marketing)
+              <br />
+              +62 811-353-8188 (HR)
             </p>
           </div>
         </div>

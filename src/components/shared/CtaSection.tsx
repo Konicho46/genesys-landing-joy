@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import trial from "@/assets/tim-genesys-2.png";
+import trial from "@/assets/about/tim-genesys-2.png";
 
 const CtaSection = () => {
   const { toast } = useToast();

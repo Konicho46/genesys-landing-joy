@@ -1,6 +1,6 @@
 // src/components/home/Innovate.tsx
 import { ArrowUpRight, Check } from "lucide-react";
-import office from "@/assets/tim-genesys-3.png";
+import office from "@/assets/about/tim-genesys-3.png";
 
 const Innovate = () => {
   return (

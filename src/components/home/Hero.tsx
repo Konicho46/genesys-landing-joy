@@ -1,9 +1,9 @@
 // src/components/home/Hero.tsx
 import { ChevronRight, ChevronLeft } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/foto-graha-pena.png";
-import logoBlack from "@/assets/logo-genesys-black.png";
-import bgHome1 from "@/assets/bghome1.png";
+import heroImg from "@/assets/about/foto-graha-pena.png";
+import logoBlack from "@/assets/logos/logo-genesys-black.png";
+import bgHome1 from "@/assets/home/bghome1.png";
 
 const Hero = () => {
   return (

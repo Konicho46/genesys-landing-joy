@@ -1,9 +1,9 @@
 // src/components/home/ModernTech.tsx
 import { Cpu, Brain, Code2 } from "lucide-react";
-import phone from "@/assets/foto-it-1.png";
-import ai from "@/assets/foto-it-3.png";
-import software from "@/assets/foto-it.png";
-import team from "@/assets/tim-genesys-1.png";
+import phone from "@/assets/about/foto-it-1.png";
+import ai from "@/assets/about/foto-it-3.png";
+import software from "@/assets/about/foto-it.png";
+import team from "@/assets/about/tim-genesys-1.png";
 
 const items = [
   {

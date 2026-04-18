@@ -1,6 +1,6 @@
 import { Home, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import hero from "@/assets/foto-graha-pena.png";
+import hero from "@/assets/about/foto-graha-pena.png";
 
 const AboutHero = () => {
   return (

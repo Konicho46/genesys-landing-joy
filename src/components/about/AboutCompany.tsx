@@ -1,4 +1,4 @@
-import team from "@/assets/foto-bersama.png";
+import team from "@/assets/about/foto-bersama.png";
 
 const AboutCompany = () => {
   return (

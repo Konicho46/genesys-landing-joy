@@ -1,24 +1,55 @@
+import aws from "@/assets/tools/aws.png";
+import azure from "@/assets/tools/azure.png";
+import bootstrap from "@/assets/tools/bootstrap.png";
+import cpp from "@/assets/tools/c++.png";
+import c from "@/assets/tools/c.png";
+import figma from "@/assets/tools/figma.png";
+import firebase from "@/assets/tools/firebase.png";
+import flutter from "@/assets/tools/flutter.png";
+import gcp from "@/assets/tools/google cloude.png";
+import kotlin from "@/assets/tools/kotlin.png";
+import laravel from "@/assets/tools/laravel.png";
+import modbus from "@/assets/tools/modbus.png";
+import mqtt from "@/assets/tools/mqtt.png";
+import mysql from "@/assets/tools/mysql.png";
+import node from "@/assets/tools/node.png";
+import nuxt from "@/assets/tools/nuxt js.png";
+import postgres from "@/assets/tools/postgres.png";
+import python from "@/assets/tools/pyhton.png";
+import react from "@/assets/tools/react.png";
+import soap from "@/assets/tools/soap.png";
+import sqlserver from "@/assets/tools/sql server.png";
+import tailwind from "@/assets/tools/tailwindcss.png";
+import vsc from "@/assets/tools/vsc.png";
+import vue from "@/assets/tools/vue.png";
+import websocket from "@/assets/tools/websocket.png";
+
 const technologies = [
-  { name: "React", color: "#61DAFB", bg: "#20232A" },
-  { name: "Flutter", color: "#54C5F8", bg: "#0553B1" },
-  { name: "Ionic", color: "#4E8EF7", bg: "#1A1A2E" },
-  { name: "Figma", color: "#F24E1E", bg: "#1E1E2E" },
-  { name: "Firebase", color: "#FFCA28", bg: "#1A1A2E" },
-  { name: "AWS", color: "#FF9900", bg: "#232F3E" },
-  { name: "Azure", color: "#0089D6", bg: "#0B3D91" },
-  { name: "MySQL", color: "#00758F", bg: "#E48E00" },
-  { name: "Vue.js", color: "#4FC08D", bg: "#1A1A2E" },
-  { name: "Kotlin", color: "#7F52FF", bg: "#1A1A2E" },
-  { name: "Node.js", color: "#68A063", bg: "#1A1A2E" },
-  { name: "Bootstrap", color: "#7952B3", bg: "#1A1A2E" },
-  { name: "Docker", color: "#2496ED", bg: "#1A1A2E" },
-  { name: "Go", color: "#00AED8", bg: "#1A1A2E" },
-  { name: "Laravel", color: "#FF2D20", bg: "#1A1A2E" },
-  { name: "TypeScript", color: "#3178C6", bg: "#1A1A2E" },
-  { name: "GraphQL", color: "#E535AB", bg: "#1A1A2E" },
-  { name: "Redis", color: "#DC382D", bg: "#1A1A2E" },
-  { name: "Kubernetes", color: "#326CE5", bg: "#1A1A2E" },
-  { name: "Terraform", color: "#7B42BC", bg: "#1A1A2E" },
+  { name: "React", image: react },
+  { name: "Flutter", image: flutter },
+  { name: "Vue.js", image: vue },
+  { name: "Nuxt.js", image: nuxt },
+  { name: "Node.js", image: node },
+  { name: "Python", image: python },
+  { name: "C++", image: cpp },
+  { name: "C", image: c },
+  { name: "Kotlin", image: kotlin },
+  { name: "Laravel", image: laravel },
+  { name: "MySQL", image: mysql },
+  { name: "PostgreSQL", image: postgres },
+  { name: "SQL Server", image: sqlserver },
+  { name: "AWS", image: aws },
+  { name: "Google Cloud", image: gcp },
+  { name: "Azure", image: azure },
+  { name: "Firebase", image: firebase },
+  { name: "Tailwind CSS", image: tailwind },
+  { name: "Bootstrap", image: bootstrap },
+  { name: "Figma", image: figma },
+  { name: "VS Code", image: vsc },
+  { name: "MQTT", image: mqtt },
+  { name: "Modbus", image: modbus },
+  { name: "SOAP", image: soap },
+  { name: "WebSocket", image: websocket },
 ];
 
 const AboutTechnologies = () => {
@@ -26,31 +57,22 @@ const AboutTechnologies = () => {
     <section className="py-20 lg:py-28 bg-hex-pattern">
       <div className="container mx-auto px-4 lg:px-8">
         <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-3">
-          We are proudly integrated &amp; registered organizations
+          A deep dive into our advanced platform capabilities.
         </p>
         <h2 className="font-display text-3xl lg:text-4xl font-bold mb-10">
           Genesys Technologies
         </h2>
-        <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-10 gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-12 lg:gap-16">
           {technologies.map((t) => (
-            <div
+            <img 
               key={t.name}
-              className="flex flex-col items-center justify-center gap-1.5 rounded-2xl p-3 border border-border hover:shadow-soft transition-all hover:-translate-y-0.5"
-              style={{ backgroundColor: t.bg }}
-            >
-              <div
-                className="size-9 rounded-full flex items-center justify-center text-xs font-bold"
-                style={{ backgroundColor: t.color + "30", color: t.color }}
-              >
-                {t.name.slice(0, 2)}
-              </div>
-              <span
-                className="text-[9px] font-semibold text-center leading-tight"
-                style={{ color: t.color }}
-              >
-                {t.name}
-              </span>
-            </div>
+              src={t.image} 
+              alt={t.name}
+              title={t.name}
+              className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 object-contain transition-transform hover:scale-110"
+              loading="lazy"
+              draggable={false}
+            />
           ))}
         </div>
       </div>

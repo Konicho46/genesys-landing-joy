@@ -5,7 +5,7 @@ const goals = [
     icon: Eye,
     label: "Vision",
     title: "Our Vision",
-    desc: "To become the leading software solutions provider in Southeast Asia, empowering businesses of all sizes with innovative, reliable, and transformative technology that drives growth and efficiency.",
+    desc: "Specializes in designing and building applications that can be used on a variety of popular platforms.",
     cardClass: "bg-accent/20",
     iconBg: "bg-accent",
     iconColor: "text-accent-foreground",
@@ -14,7 +14,7 @@ const goals = [
     icon: Target,
     label: "Mission",
     title: "Our Mission",
-    desc: "To deliver high-quality, tailor-made technology solutions that exceed client expectations — built on a foundation of innovation, integrity, and a passionate commitment to long-term partnership and success.",
+    desc: "Energetic and enthusiastic team familiar and updated with recent technological updates.",
     cardClass: "bg-card",
     iconBg: "bg-primary",
     iconColor: "text-white",
@@ -26,7 +26,7 @@ const AboutGoals = () => {
     <section className="py-20 lg:py-28">
       <div className="container mx-auto px-4 lg:px-8">
         <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-3">
-          To set high performance through vision and future plans
+          Empowering businesses through innovative solutions.
         </p>
         <h2 className="font-display text-3xl lg:text-4xl font-bold mb-12">Our Goals</h2>
         <div className="grid sm:grid-cols-2 gap-6">

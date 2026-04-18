@@ -10,8 +10,8 @@ import Advantage from "@/components/home/Advantage";
 import Portfolio from "@/components/home/Portfolio";
 import Testimonial from "@/components/home/Testimonial";
 
-import bgHome2 from "@/assets/bghome2.png";
-import bgHome3 from "@/assets/bghome3.png";
+import bgHome2 from "@/assets/home/bghome2.png";
+import bgHome3 from "@/assets/home/bghome3.png";
 
 const Index = () => {
   return (

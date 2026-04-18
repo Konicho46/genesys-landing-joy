@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import akusehat from "@/assets/mockup-akusehat.png";
-import artha from "@/assets/mockup-artha.png";
+import akusehat from "@/assets/portfolio/mockup-akusehat.png";
+import artha from "@/assets/portfolio/mockup-artha.png";
 
 const items = [
   {

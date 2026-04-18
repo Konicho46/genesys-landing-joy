@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Quote, ChevronLeft, ChevronRight, User } from "lucide-react";
-import erica from "@/assets/client-erica.png";
+import erica from "@/assets/clients/client-erica.png";
 
 const testimonials = [
   {
