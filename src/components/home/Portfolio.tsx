@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import akusehat from "@/assets/portfolio/mockup-akusehat.png";
 import artha from "@/assets/portfolio/mockup-artha.png";
+import pmi from "@/assets/portfolio/mockup-pmi.png";
+import mcp from "@/assets/portfolio/mockup-mcp.png";
+import otsuka from "@/assets/portfolio/mockup-otsuka.png";
+import cmw from "@/assets/portfolio/mockup-cmw.png";
 
 const items = [
   {
@@ -20,25 +24,25 @@ const items = [
     tag: "Enterprise Resource Planning & Human Resource Management",
     title: "Palang Merah Indonesia",
     body: "We built a nationwide, single-gateway platform: Salmon ERP to manage facilities and donations so data stays tidy, traceable, and national reports are issued faster; and Snapper HRM that complies with the latest PPh 21 income-tax rules, with GPS-based mobile attendance so data consolidates automatically at HQ. The result: payroll across all branches is faster, more accurate, and easier to audit.",
-    image: artha,
+    image: pmi,
   },
   {
     tag: "Enterprise Resource Planning & Hardware Infrastructure",
     title: "PT. Mutiara Cahaya Plastindo",
     body: "We implemented a customized Desktop ERP for plastic manufacturing to make operations more orderly and measurable. On the infrastructure side, we set up SQL + Windows Server configured with MikroTik for secure network access, stable systems, and optimal database performance from the back end to day-to-day operations.",
-    image: akusehat,
+    image: mcp,
   },
   {
     tag: "Internet of Things",
     title: "PT. Otsuka Indonesia",
     body: "We implemented Salmon ERP to unify sales, logistics, and accounting across three branches, automatically linking the order → picking → shipping flow to inventory, shipping, and general ledger posting. Management gained a consolidated branch and national dashboard for real-time monitoring, accelerating the closing process and improving reporting accuracy.",
-    image: artha,
+    image: otsuka,
   },
   {
     tag: "Internet of Things",
     title: "PT. Central Motor Wheel Indonesia",
     body: "We implemented Codetrack to comply with BPOM Regulation No. 22/2022: each package has a unique 2D code printed and verified automatically on the line. Serial numbers are recorded end-to-end from production to the warehouse, preventing duplication and accelerating traceability and recalls.",
-    image: akusehat,
+    image: cmw,
   },
 ];
 
