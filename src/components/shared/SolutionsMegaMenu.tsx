@@ -34,7 +34,7 @@ export const SolutionsMegaMenu = () => {
     <div className="w-[800px] lg:w-[1000px] bg-white rounded-b-2xl shadow-elev overflow-hidden border border-border/50">
       <div className="flex flex-col md:flex-row h-[520px]">
         {/* Kolom Kiri: Kategori Layanan (Warna soft hijau text) */}
-        <div className="w-full md:w-[60%] bg-[#f4fbfb] p-8 lg:p-10 flex flex-col">
+        <div className="w-full md:w-[60%] bg-gradient-to-br from-[#f1f4f6] to-[#e6edeb] p-8 lg:p-10 flex flex-col">
           <div className="mb-6">
             <h5 className="text-[10px] uppercase tracking-widest text-[#6abf2e] font-bold mb-2">
               Editorial Feature

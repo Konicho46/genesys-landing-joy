@@ -98,24 +98,46 @@
     scroll-behavior: smooth; 
     /* Firefox */
     scrollbar-width: thin;
-    scrollbar-color: hsl(var(--accent)) #e2e2e2;
+    scrollbar-color: hsl(var(--accent)) hsl(var(--muted));
   }
   
   /* Webkit Browsers (Chrome, Edge, Safari) */
   ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: hsl(var(--muted) / 0.5);
+    border-radius: 999px;
+    border: 1.5px solid hsl(var(--border));
+    margin-block: 4px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--accent));
-    border-radius: 10px;
-    border: 3px solid #ffffff;
+    background: hsl(var(--accent));
+    border-radius: 999px;
+    /* Trick: negative border bikin thumb "lebih lebar" dari track-nya */
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow:
+      0 0 0 1.5px hsl(var(--accent) / 0.25),
+      inset 0 1px 0 hsl(var(--accent) / 0.4),
+      inset 0 -1px 0 hsl(var(--accent) / 0.15);
+    min-height: 40px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: hsl(var(--accent) / 0.8);
+    background: hsl(var(--accent) / 0.85);
+    background-clip: padding-box;
+    box-shadow:
+      0 0 0 2px hsl(var(--accent) / 0.35),
+      inset 0 1px 0 hsl(var(--accent) / 0.5),
+      inset 0 -1px 0 hsl(var(--accent) / 0.2);
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: hsl(var(--accent) / 0.95);
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
   }
 
   body {
