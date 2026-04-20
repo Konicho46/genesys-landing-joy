@@ -99,7 +99,7 @@ const AboutCertifications = () => {
   const { ref: revealRef, className: revealClassName } = useReveal({ variant: "fade-up" });
 
   return (
-    <section ref={revealRef} className={`py-20 lg:py-28 bg-hex-pattern ${revealClassName}`}>
+    <section ref={revealRef} className={`py-20 lg:py-28 ${revealClassName}`}>
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header row with arrows */}
         <div className="flex items-end justify-between mb-10 gap-4">

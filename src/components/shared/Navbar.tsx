@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logos/logo-genesys-white.png";
+import { SolutionsMegaMenu } from "./SolutionsMegaMenu";
 
 const links = [
   { label: "Home", href: "/" },
@@ -10,7 +11,7 @@ const links = [
   { label: "Solutions", href: "/#solutions" },
   { label: "Whitepaper", href: "/#webpaper" },
   { label: "Clients", href: "/#client" },
-  { label: "Career", href: "/#karier" },
+  { label: "Career", href: "/career" },
 ];
 
 const Navbar = () => {
@@ -34,8 +35,28 @@ const Navbar = () => {
           <ul className="hidden lg:flex items-center gap-8 text-sm font-medium text-white/80">
             {links.map((l) => {
               const isActive = l.href === location.pathname;
+
+              if (l.label === "Solutions") {
+                return (
+                  <li key={l.label} className="group/nav py-6">
+                    <button className={`relative flex items-center gap-1 transition-colors group-hover/nav:text-white ${isActive ? "text-accent" : "text-white/80"}`}>
+                      {l.label}
+                      <ChevronDown className="size-3.5 transition-transform duration-300 group-hover/nav:rotate-180" />
+                      <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ease-out ${isActive ? "w-full" : "w-0 group-hover/nav:w-full"}`} />
+                    </button>
+                    
+                    {/* The wrapper handles hits (no gap), the inner handles visual animation */}
+                    <div className="absolute top-[60px] left-1/2 -translate-x-1/2 pt-[20px] w-max opacity-0 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:pointer-events-auto transition-opacity duration-300">
+                      <div className="translate-y-2 group-hover/nav:translate-y-0 transition-transform duration-300">
+                        <SolutionsMegaMenu />
+                      </div>
+                    </div>
+                  </li>
+                );
+              }
+
               return (
-                <li key={l.label}>
+                <li key={l.label} className="py-6">
                   {l.href.startsWith("/#") ? (
                     <a
                       href={l.href.replace("/", "")}
@@ -45,7 +66,7 @@ const Navbar = () => {
                     >
                       {l.label}
                       <span
-                        className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-300 ease-out ${
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ease-out ${
                           isActive ? "w-full" : "w-0 group-hover:w-full"
                         }`}
                       />
@@ -59,7 +80,7 @@ const Navbar = () => {
                     >
                       {l.label}
                       <span
-                        className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-300 ease-out ${
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ease-out ${
                           isActive ? "w-full" : "w-0 group-hover:w-full"
                         }`}
                       />
@@ -72,14 +93,16 @@ const Navbar = () => {
 
           {/* CTA */}
           <div className="hidden lg:block">
-            <Button
-              variant="accent"
-              size="sm"
-              className="rounded-full font-semibold px-5 flex items-center gap-2"
-            >
-              <Phone className="size-3.5" />
-              Contact Us
-            </Button>
+            <Link to="/contact">
+              <Button
+                variant="accent"
+                size="sm"
+                className="rounded-full font-semibold px-5 flex items-center gap-2"
+              >
+                <Phone className="size-3.5" />
+                Contact Us
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -118,13 +141,15 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <Button
-              variant="accent"
-              className="w-full mt-3 rounded-full font-semibold flex items-center justify-center gap-2"
-            >
-              <Phone className="size-3.5" />
-              Contact Us
-            </Button>
+            <Link to="/contact" onClick={() => setOpen(false)}>
+              <Button
+                variant="accent"
+                className="w-full mt-3 rounded-full font-semibold flex items-center justify-center gap-2"
+              >
+                <Phone className="size-3.5" />
+                Contact Us
+              </Button>
+            </Link>
           </div>
         )}
       </div>

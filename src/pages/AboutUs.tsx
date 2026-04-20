@@ -11,6 +11,8 @@ import AboutCertifications from "@/components/about/AboutCertifications";
 import AboutPartners from "@/components/about/AboutPartners";
 import AboutTechnologies from "@/components/about/AboutTechnologies";
 
+import bgHome3 from "@/assets/home/bghome3.png";
+
 const AboutUs = () => {
   return (
     <main className="min-h-screen bg-background">
@@ -25,10 +27,24 @@ const AboutUs = () => {
           "Summary Executive",
         ]}
       />
-      <AboutLeader />
-      <AboutGoals />
-      <AboutCertifications />
-      <AboutPartners />
+      <div className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${bgHome3})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.30,
+          }}
+        />
+        <div className="relative z-10">
+          <AboutLeader />
+          <AboutGoals />
+          <AboutCertifications />
+          <AboutPartners />
+        </div>
+      </div>
       <AboutTechnologies />
       <CtaSection />
       <Footer />
