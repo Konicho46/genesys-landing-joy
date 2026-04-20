@@ -1,4 +1,7 @@
+// src/components/home/Advantage.tsx
 import { MonitorSmartphone, LayoutGrid, Users, Brain } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const items = [
   {
@@ -23,9 +26,37 @@ const items = [
   },
 ];
 
-const Advantage = () => {
+const AdvantageCard = ({ icon: Icon, title, desc, index }: { icon: any, title: string, desc: string, index: number }) => {
+  const { ref, className } = useReveal({
+    variant: "fade-up",
+    delay: index * 120,
+  });
+  
   return (
-    <section className="py-20 lg:py-28">
+    <Card
+      ref={ref}
+      className={`rounded-2xl shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300 ${className}`}
+    >
+      <CardHeader className="pb-2">
+        <div className="size-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mb-5">
+          <Icon className="size-5" />
+        </div>
+        <CardTitle className="font-display text-base lg:text-[1.05rem] leading-snug">
+          {title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+      </CardContent>
+    </Card>
+  );
+};
+
+const Advantage = () => {
+  const { ref, className } = useReveal({ variant: "zoom-in" });
+
+  return (
+    <section ref={ref} className={`py-20 lg:py-28 ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
@@ -41,19 +72,8 @@ const Advantage = () => {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {items.map(({ icon: Icon, title, desc }) => (
-            <article
-              key={title}
-              className="bg-card border border-border rounded-2xl p-6 shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="size-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mb-5">
-                <Icon className="size-5" />
-              </div>
-              <h3 className="font-display font-bold text-base lg:text-[1.05rem] leading-snug mb-2">
-                {title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            </article>
+          {items.map(({ icon, title, desc }, i) => (
+            <AdvantageCard key={title} icon={icon} title={title} desc={desc} index={i} />
           ))}
         </div>
       </div>

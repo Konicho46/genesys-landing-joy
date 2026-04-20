@@ -1,10 +1,12 @@
 import { Home, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import hero from "@/assets/about/foto-graha-pena.png";
+import { useReveal } from "@/hooks/use-reveal";
 
 const AboutHero = () => {
+  const { ref, className } = useReveal({ variant: "blur-in" });
   return (
-    <section className="relative min-h-[45vh] flex items-end overflow-hidden">
+    <section ref={ref} className={`relative min-h-[45vh] flex items-end overflow-hidden ${className}`}>
       <img
         src={hero}
         alt="Kantor Genesys Integrated Indonesia"

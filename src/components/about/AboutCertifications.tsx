@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 import cert1 from "@/assets/certifications/ibm.png";
 import cert2 from "@/assets/certifications/zebra.png";
@@ -36,10 +39,12 @@ const AboutCertifications = () => {
   }, []);
 
   const maxIndex = Math.max(0, certs.length - visible);
+  const clampedIndex = Math.min(index, maxIndex);
 
-  useEffect(() => {
-    setIndex((i) => Math.min(i, maxIndex));
-  }, [visible, maxIndex]);
+  // Sync state only when it actually needs clamping (e.g. after resize)
+  if (clampedIndex !== index) {
+    setIndex(clampedIndex);
+  }
 
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
@@ -91,9 +96,10 @@ const AboutCertifications = () => {
     onDragEnd(e.changedTouches[0].clientX);
 
   const cardWidthPercent = 100 / visible;
+  const { ref: revealRef, className: revealClassName } = useReveal({ variant: "fade-up" });
 
   return (
-    <section className="py-20 lg:py-28 bg-hex-pattern">
+    <section ref={revealRef} className={`py-20 lg:py-28 bg-hex-pattern ${revealClassName}`}>
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header row with arrows */}
         <div className="flex items-end justify-between mb-10 gap-4">
@@ -108,26 +114,30 @@ const AboutCertifications = () => {
 
           {/* Arrow buttons */}
           <div className="flex items-center gap-2 shrink-0">
-            <button
+            <Button
+              variant="outline"
+              size="icon"
               onClick={prev}
               aria-label="Previous"
-              className={`size-10 rounded-full border border-border bg-card flex items-center justify-center transition-all duration-200 hover:bg-muted ${
+              className={`rounded-full transition-all duration-200 ${
                 index === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
               }`}
             >
               <ChevronLeft className="size-4" />
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
               onClick={next}
               aria-label="Next"
-              className={`size-10 rounded-full border border-border bg-card flex items-center justify-center transition-all duration-200 hover:bg-muted ${
+              className={`rounded-full transition-all duration-200 ${
                 index >= maxIndex
                   ? "opacity-0 pointer-events-none"
                   : "opacity-100"
               }`}
             >
               <ChevronRight className="size-4" />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -156,7 +166,7 @@ const AboutCertifications = () => {
                 className="shrink-0 px-2.5 first:pl-0 last:pr-0"
                 style={{ width: `${cardWidthPercent}%` }}
               >
-                <div className="bg-card border border-border rounded-2xl shadow-soft hover:shadow-card transition-shadow overflow-hidden">
+                <Card className="rounded-2xl shadow-soft hover:shadow-card transition-shadow overflow-hidden border-border">
                   <div className="aspect-[4/3] bg-muted/20 overflow-hidden p-4">
                     <img
                       src={cert.image}
@@ -166,7 +176,7 @@ const AboutCertifications = () => {
                       draggable={false}
                     />
                   </div>
-                </div>
+                </Card>
               </article>
             ))}
           </div>

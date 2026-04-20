@@ -1,5 +1,7 @@
 // src/components/home/ModernTech.tsx
 import { Cpu, Brain, Code2 } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import { Card, CardContent } from "@/components/ui/card";
 import phone from "@/assets/about/foto-it-1.png";
 import ai from "@/assets/about/foto-it-3.png";
 import software from "@/assets/about/foto-it.png";
@@ -30,8 +32,10 @@ const items = [
 ];
 
 const ModernTech = () => {
+  const { ref, className } = useReveal({ variant: "flip-y" });
+
   return (
-    <section className="py-20 lg:py-28">
+    <section ref={ref} className={`py-20 lg:py-28 ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-6 items-stretch">
 
@@ -55,9 +59,9 @@ const ModernTech = () => {
 
             {/* Service cards */}
             {items.map(({ icon: Icon, title, desc, img, imgRight }) => (
-              <article
+              <Card
                 key={title}
-                className={`group bg-card border border-border rounded-2xl overflow-hidden shadow-soft hover:shadow-card transition-shadow flex ${
+                className={`group overflow-hidden shadow-soft hover:shadow-card transition-shadow flex rounded-2xl ${
                   imgRight ? "flex-row-reverse" : "flex-row"
                 }`}
               >
@@ -69,7 +73,7 @@ const ModernTech = () => {
                     loading="lazy"
                   />
                 </div>
-                <div className="flex-1 p-5">
+                <CardContent className="flex-1 p-5 pt-5 pb-5">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="size-7 rounded-md bg-accent/20 flex items-center justify-center">
                       <Icon className="size-4 text-accent-foreground" />
@@ -81,8 +85,8 @@ const ModernTech = () => {
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {desc}
                   </p>
-                </div>
-              </article>
+                </CardContent>
+              </Card>
             ))}
           </div>
 

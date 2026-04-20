@@ -1,4 +1,6 @@
 import { Eye, Target } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import { Card, CardTitle, CardContent } from "@/components/ui/card";
 
 const goals = [
   {
@@ -22,8 +24,9 @@ const goals = [
 ];
 
 const AboutGoals = () => {
+  const { ref, className } = useReveal({ variant: "fade-right" });
   return (
-    <section className="py-20 lg:py-28">
+    <section ref={ref} className={`py-20 lg:py-28 ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-3">
           Empowering businesses through innovative solutions.
@@ -31,21 +34,23 @@ const AboutGoals = () => {
         <h2 className="font-display text-3xl lg:text-4xl font-bold mb-12">Our Goals</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {goals.map(({ icon: Icon, label, title, desc, cardClass, iconBg, iconColor }) => (
-            <article
+            <Card
               key={label}
-              className={`rounded-3xl p-8 lg:p-10 border border-border shadow-soft ${cardClass}`}
+              className={`rounded-3xl shadow-soft ${cardClass} border-border`}
             >
-              <div
-                className={`size-12 rounded-full ${iconBg} ${iconColor} flex items-center justify-center mb-5`}
-              >
-                <Icon className="size-6" />
-              </div>
-              <div className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-2">
-                {label}
-              </div>
-              <h3 className="font-display text-xl lg:text-2xl font-bold mb-4">{title}</h3>
-              <p className="text-muted-foreground text-sm lg:text-base leading-relaxed">{desc}</p>
-            </article>
+              <CardContent className="p-8 lg:p-10">
+                <div
+                  className={`size-12 rounded-full ${iconBg} ${iconColor} flex items-center justify-center mb-5`}
+                >
+                  <Icon className="size-6" />
+                </div>
+                <div className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-2">
+                  {label}
+                </div>
+                <CardTitle className="font-display text-xl lg:text-2xl font-bold mb-4">{title}</CardTitle>
+                <p className="text-muted-foreground text-sm lg:text-base leading-relaxed">{desc}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

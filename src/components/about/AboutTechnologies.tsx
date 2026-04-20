@@ -1,4 +1,5 @@
 import aws from "@/assets/tools/aws.png";
+import { useReveal } from "@/hooks/use-reveal";
 import azure from "@/assets/tools/azure.png";
 import bootstrap from "@/assets/tools/bootstrap.png";
 import cpp from "@/assets/tools/c++.png";
@@ -53,8 +54,9 @@ const technologies = [
 ];
 
 const AboutTechnologies = () => {
+  const { ref, className } = useReveal({ variant: "fade-up" });
   return (
-    <section className="py-20 lg:py-28 bg-hex-pattern">
+    <section ref={ref} className={`py-20 lg:py-28 bg-hex-pattern ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-3">
           A deep dive into our advanced platform capabilities.

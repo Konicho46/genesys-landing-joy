@@ -1,13 +1,17 @@
 // src/components/home/Hero.tsx
-import { ChevronRight, ChevronLeft } from "lucide-react"; 
+import { ChevronRight } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { useReveal } from "@/hooks/use-reveal";
 import heroImg from "@/assets/about/foto-graha-pena.png";
 import logoBlack from "@/assets/logos/logo-genesys-black.png";
 import bgHome1 from "@/assets/home/bghome1.png";
 
 const Hero = () => {
+  const { ref, className } = useReveal({ variant: "fade-up", initialVisible: true });
+
   return (
-    <section id="home" className="pt-16 min-h-screen relative"> {/* tambah relative di sini */}
+    <section id="home" ref={ref} className={`pt-16 min-h-screen relative ${className}`}> {/* tambah relative di sini */}
       <div className="grid lg:grid-cols-[45fr_55fr] min-h-[calc(100vh-4rem)]">
 
         {/* ── LEFT ── */}
@@ -67,14 +71,16 @@ const Hero = () => {
       </div>
 
       {/* ── Floating logo card ── */}
-      <div className="
-        absolute z-10 bg-white rounded-2xl shadow-xl flex items-center px-8 py-4 lg:px-10 lg:py-8
+      <Card className="
+        absolute z-10 bg-white border-none rounded-2xl shadow-xl 
         bottom-8
         left-1/2 -translate-x-1/2
-        lg:left-[45%] lg:-translate-x-1/2
+        lg:left-[45%]
       ">
-        <img src={logoBlack} alt="Genesys logo" className="h-8 sm:h-12 xl:h-20 w-auto" />
-      </div>
+        <CardContent className="flex items-center justify-center p-0 px-8 py-4 lg:px-10 lg:py-8">
+          <img src={logoBlack} alt="Genesys logo" className="h-8 sm:h-12 xl:h-20 w-auto" />
+        </CardContent>
+      </Card>
     </section>
   );
 };

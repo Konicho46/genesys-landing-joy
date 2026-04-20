@@ -1,8 +1,10 @@
 import team from "@/assets/about/foto-bersama.png";
+import { useReveal } from "@/hooks/use-reveal";
 
 const AboutCompany = () => {
+  const { ref, className } = useReveal({ variant: "fade-up" });
   return (
-    <section className="py-20 lg:py-28">
+    <section ref={ref} className={`py-20 lg:py-28 ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">

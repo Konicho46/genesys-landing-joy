@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import akusehat from "@/assets/portfolio/mockup-akusehat.png";
 import artha from "@/assets/portfolio/mockup-artha.png";
 import pmi from "@/assets/portfolio/mockup-pmi.png";
@@ -46,6 +49,41 @@ const items = [
   },
 ];
 
+const PortfolioItem = ({ it, cardWidthPercent, index }: any) => {
+  const { ref, className } = useReveal({ variant: "fade-up", delay: index * 100 });
+  return (
+    <article
+      ref={ref}
+      className={`shrink-0 px-2.5 first:pl-0 last:pr-0 ${className}`}
+      style={{ width: `${cardWidthPercent}%` }}
+    >
+      <Card className="rounded-3xl shadow-soft hover:shadow-card transition-shadow h-full flex flex-col overflow-hidden border-border">
+        {/* Mockup image */}
+        <div className="h-48 bg-muted/40 overflow-hidden flex items-center justify-center p-4">
+          <img
+            src={it.image}
+            alt={`${it.title} mockup`}
+            className="max-h-full w-auto object-contain drop-shadow-xl"
+            loading="lazy"
+          />
+        </div>
+        {/* Text */}
+        <CardHeader className="pb-2 flex-1">
+          <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground mb-2">
+            {it.tag}
+          </p>
+          <CardTitle className="font-display text-lg font-bold leading-snug">{it.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0 pb-6 flex-1">
+          <p className="text-sm text-muted-foreground mt-3 leading-relaxed flex-1">
+            {it.body}
+          </p>
+        </CardContent>
+      </Card>
+    </article>
+  );
+};
+
 const Portfolio = () => {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(2);
@@ -64,11 +102,12 @@ const Portfolio = () => {
   }, []);
 
   const maxIndex = items.length - visible; // max starting index
+  const clampedIndex = Math.min(index, maxIndex);
 
-  // Clamp index when visible changes (e.g. resize)
-  useEffect(() => {
-    setIndex((i) => Math.min(i, items.length - visible));
-  }, [visible]);
+  // Sync state only when it actually needs clamping (e.g. after resize)
+  if (clampedIndex !== index) {
+    setIndex(clampedIndex);
+  }
 
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
@@ -114,9 +153,10 @@ const Portfolio = () => {
   const handleTouchEnd   = (e: React.TouchEvent) => onDragEnd(e.changedTouches[0].clientX);
 
   const cardWidthPercent = 100 / visible;
+  const { ref: revealRef, className: sectionClassName } = useReveal({ variant: "fade-up" });
 
   return (
-    <section id="portfolio" className="py-20 lg:py-28">
+    <section id="portfolio" ref={revealRef} className={`py-20 lg:py-28 ${sectionClassName}`}>
       <div className="container mx-auto px-4 lg:px-8">
 
         {/* Header row with arrows */}
@@ -133,24 +173,28 @@ const Portfolio = () => {
 
           {/* Arrow buttons */}
           <div className="flex items-center gap-2 shrink-0">
-            <button
+            <Button
+              variant="outline"
+              size="icon"
               onClick={prev}
               aria-label="Previous"
-              className={`size-10 rounded-full border border-border bg-card flex items-center justify-center transition-all duration-200 hover:bg-muted ${
+              className={`rounded-full transition-all duration-200 ${
                 index === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
               }`}
             >
               <ChevronLeft className="size-4" />
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
               onClick={next}
               aria-label="Next"
-              className={`size-10 rounded-full border border-border bg-card flex items-center justify-center transition-all duration-200 hover:bg-muted ${
+              className={`rounded-full transition-all duration-200 ${
                 index >= maxIndex ? "opacity-0 pointer-events-none" : "opacity-100"
               }`}
             >
               <ChevronRight className="size-4" />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -173,34 +217,8 @@ const Portfolio = () => {
               transition: dragging ? "none" : "transform 0.35s ease-in-out",
             }}
           >
-            {items.map((it) => (
-              <article
-                key={it.title}
-                className="shrink-0 px-2.5 first:pl-0 last:pr-0"
-                style={{ width: `${cardWidthPercent}%` }}
-              >
-                <div className="bg-card border border-border rounded-3xl shadow-soft hover:shadow-card transition-shadow h-full flex flex-col">
-                  {/* Mockup image */}
-                  <div className="h-48 bg-muted/40 rounded-t-3xl overflow-hidden flex items-center justify-center p-4">
-                    <img
-                      src={it.image}
-                      alt={`${it.title} mockup`}
-                      className="max-h-full w-auto object-contain drop-shadow-xl"
-                      loading="lazy"
-                    />
-                  </div>
-                  {/* Text */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground mb-2">
-                      {it.tag}
-                    </p>
-                    <h3 className="font-display text-lg font-bold leading-snug">{it.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed flex-1">
-                      {it.body}
-                    </p>
-                  </div>
-                </div>
-              </article>
+            {items.map((it, i) => (
+              <PortfolioItem key={it.title} it={it} cardWidthPercent={cardWidthPercent} index={i} />
             ))}
           </div>
         </div>

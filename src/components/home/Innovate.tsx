@@ -1,10 +1,14 @@
 // src/components/home/Innovate.tsx
 import { ArrowUpRight, Check } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import { Card, CardContent } from "@/components/ui/card";
 import office from "@/assets/about/tim-genesys-3.png";
 
 const Innovate = () => {
+  const { ref, className } = useReveal({ variant: "zoom-in" });
+
   return (
-    <section id="about" className="py-20 lg:py-28 overflow-hidden">
+    <section id="about" ref={ref} className={`py-20 lg:py-28 overflow-hidden ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
 
         {/* ── Desktop: 2-col layout | Mobile: stacked ── */}
@@ -94,26 +98,30 @@ const Innovate = () => {
               {/* Cards */}
               <div className="grid grid-cols-2 gap-4 mt-7 lg:-mr-8">
                 {/* Card 1 – Teal */}
-                <div className="rounded-2xl bg-[hsl(188_80%_42%)] text-white p-6 shadow-card">
-                  <div className="size-8 rounded-full bg-white flex items-center justify-center mb-4">
-                    <Check className="size-4 text-[hsl(188_80%_42%)]" />
-                  </div>
-                  <div className="font-display text-4xl font-bold">900 +</div>
-                  <p className="text-sm/relaxed mt-2 text-white/85">
-                    Trusted National &amp;<br />International Client
-                  </p>
-                </div>
+                <Card className="rounded-2xl bg-[hsl(188_80%_42%)] text-white shadow-card border-none">
+                  <CardContent className="p-6">
+                    <div className="size-8 rounded-full bg-white flex items-center justify-center mb-4">
+                      <Check className="size-4 text-[hsl(188_80%_42%)]" />
+                    </div>
+                    <div className="font-display text-4xl font-bold">900 +</div>
+                    <p className="text-sm/relaxed mt-2 text-white/85">
+                      Trusted National &amp;<br />International Client
+                    </p>
+                  </CardContent>
+                </Card>
 
                 {/* Card 2 – White */}
-                <div className="rounded-2xl bg-white text-foreground p-6 shadow-card border border-border">
-                  <div className="size-8 rounded-full bg-foreground flex items-center justify-center mb-4">
-                    <Check className="size-4 text-white" />
-                  </div>
-                  <div className="font-display text-4xl font-bold">125 +</div>
-                  <p className="text-sm/relaxed mt-2 text-muted-foreground">
-                    Best Project<br />Completed
-                  </p>
-                </div>
+                <Card className="rounded-2xl bg-white text-foreground shadow-card border border-border">
+                  <CardContent className="p-6">
+                    <div className="size-8 rounded-full bg-foreground flex items-center justify-center mb-4">
+                      <Check className="size-4 text-white" />
+                    </div>
+                    <div className="font-display text-4xl font-bold">125 +</div>
+                    <p className="text-sm/relaxed mt-2 text-muted-foreground">
+                      Best Project<br />Completed
+                    </p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
 

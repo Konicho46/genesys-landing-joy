@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Quote, ChevronLeft, ChevronRight, User } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
+import { Button } from "@/components/ui/button";
 import erica from "@/assets/clients/client-erica.png";
 
 const testimonials = [
@@ -21,12 +23,13 @@ const testimonials = [
 
 const Testimonial = () => {
   const [index, setIndex] = useState(0);
+  const { ref, className } = useReveal({ variant: "fade-left" });
   const active = testimonials[index];
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(testimonials.length - 1, i + 1));
 
   return (
-    <section id="client" className="py-20 lg:py-28">
+    <section id="client" ref={ref} className={`py-20 lg:py-28 ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="flex items-end justify-between mb-10 gap-4">
@@ -42,22 +45,26 @@ const Testimonial = () => {
 
           {/* Arrow controls */}
           <div className="flex items-center gap-2 shrink-0">
-            <button
+            <Button
+              variant="outline"
+              size="icon"
               onClick={prev}
               aria-label="Previous testimonial"
-              className={`size-10 rounded-full border border-border bg-card flex items-center justify-center transition-all duration-200 hover:bg-muted ${index === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
+              className={`rounded-full transition-all duration-200 ${index === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
             >
               <ChevronLeft className="size-4" />
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
               onClick={next}
               aria-label="Next testimonial"
-              className={`size-10 rounded-full border border-border bg-card flex items-center justify-center transition-all duration-200 hover:bg-muted ${index >= testimonials.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"
+              className={`rounded-full transition-all duration-200 ${index >= testimonials.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
             >
               <ChevronRight className="size-4" />
-            </button>
+            </Button>
           </div>
         </div>
 

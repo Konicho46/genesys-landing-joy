@@ -1,8 +1,10 @@
 import donny from "@/assets/about/founder.png";
+import { useReveal } from "@/hooks/use-reveal";
 
 const AboutLeader = () => {
+  const { ref, className } = useReveal({ variant: "fade-up" });
   return (
-    <section className="py-20 lg:py-28 bg-hex-pattern">
+    <section ref={ref} className={`py-20 lg:py-28 bg-hex-pattern ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>

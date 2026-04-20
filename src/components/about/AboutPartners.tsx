@@ -1,4 +1,5 @@
 import p0 from "@/assets/partners/Frame 236.png";
+import { useReveal } from "@/hooks/use-reveal";
 import p1 from "@/assets/partners/Frame 236 (1).png";
 import p2 from "@/assets/partners/Frame 236 (2).png";
 import p3 from "@/assets/partners/Frame 236 (3).png";
@@ -27,8 +28,9 @@ const partners = [
 ];
 
 const AboutPartners = () => {
+  const { ref, className } = useReveal({ variant: "fade-up" });
   return (
-    <section className="py-20 lg:py-28">
+    <section ref={ref} className={`py-20 lg:py-28 ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-3">
           Delivering comprehensive solutions through synergy.

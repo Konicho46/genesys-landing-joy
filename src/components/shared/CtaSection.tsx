@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import trial from "@/assets/about/tim-genesys-2.png";
 
@@ -97,14 +98,11 @@ const CtaSection = () => {
                   className="mt-1.5 bg-background"
                 />
               </div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <input
-                  type="checkbox"
-                  id="cta-robot"
-                  className="size-4 accent-primary"
-                  required
-                />
-                <label htmlFor="cta-robot">I'm not a robot</label>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="cta-robot" required className="border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground" />
+                <Label htmlFor="cta-robot" className="text-xs text-muted-foreground cursor-pointer">
+                  I'm not a robot
+                </Label>
               </div>
               <Button type="submit" variant="hero" className="rounded-full font-semibold">
                 Submit Inquiry

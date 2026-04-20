@@ -1,1 +1,31 @@
 /* App-level styles — layout is handled by Tailwind/page components */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[class*="reveal-"] {
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.65s ease;
+}
+[class*="reveal-"].visible {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.reveal-fade-up    { opacity: 0; transform: translateY(30px); }
+.reveal-fade-down  { opacity: 0; transform: translateY(-30px); }
+.reveal-fade-left  { opacity: 0; transform: translateX(-30px); }
+.reveal-fade-right { opacity: 0; transform: translateX(30px); }
+.reveal-zoom-in    { opacity: 0; transform: scale(0.85); }
+.reveal-zoom-out   { opacity: 0; transform: scale(1.12); }
+.reveal-flip-x     { opacity: 0; transform: perspective(600px) rotateX(55deg); }
+.reveal-flip-y     { opacity: 0; transform: perspective(600px) rotateY(55deg); }
+.reveal-blur-in    { opacity: 0; filter: blur(10px); }
