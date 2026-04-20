@@ -50,11 +50,11 @@ const Footer = () => {
         </div>
       </div>
       {/* Footer body */}
-      <div className="container mx-auto px-4 lg:px-8 py-10"> {/* ↓ dari py-14 */}
-        <div className="grid grid-cols-2 lg:grid-cols-12 gap-8"> {/* ↓ dari gap-10 */}
+      <div className="container mx-auto px-4 lg:px-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
 
           {/* Logo + tagline */}
-          <div className="col-span-2 lg:col-span-4">
+          <div className="md:col-span-2 lg:col-span-4">
             <img
               src={logo}
               alt="Genesys Integrated Indonesia logo"
@@ -101,7 +101,7 @@ const Footer = () => {
             <h4 className="font-display font-bold text-xs uppercase tracking-widest mt-5 mb-2 text-foreground">
               Contact
             </h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed break-all sm:break-normal">
               marketing@genesysindonesia.com
               <br />
               +62 817-373-851 (Marketing)
@@ -113,11 +113,11 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="mt-8 pt-5 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>
+          <p className="text-center sm:text-left">
             © {new Date().getFullYear()} PT Genesys Integrated Indonesia. All
             rights reserved.
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-4 gap-y-2 mt-4 sm:mt-0">
             <a href="#" className="hover:text-foreground transition-colors">Sitemap</a>
             <a href="/about" className="hover:text-foreground transition-colors">About</a>
             <a href="#webpaper" className="hover:text-foreground transition-colors">Whitepaper</a>

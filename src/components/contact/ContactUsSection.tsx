@@ -169,11 +169,11 @@ const ContactUsSection = () => {
               <div className="bg-muted p-2.5 rounded-lg shrink-0">
                 <Mail className="size-5 text-accent" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1">
                   Email Support
                 </p>
-                <a href="mailto:marketing@genesysindonesia.com" className="text-sm font-semibold text-foreground hover:text-accent transition-colors">
+                <a href="mailto:marketing@genesysindonesia.com" className="text-sm font-semibold text-foreground hover:text-accent transition-colors block break-all">
                   marketing@genesysindonesia.com
                 </a>
               </div>
@@ -184,15 +184,15 @@ const ContactUsSection = () => {
               <div className="bg-muted p-2.5 rounded-lg shrink-0">
                 <Phone className="size-5 text-accent" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1">
                   Hotline
                 </p>
                 <div className="flex flex-col gap-1">
-                  <a href="tel:+62817373851" className="text-sm font-semibold text-foreground hover:text-accent transition-colors">
+                  <a href="tel:+62817373851" className="text-sm font-semibold text-foreground hover:text-accent transition-colors block break-words">
                     +62 817-373-851 (Marketing)
                   </a>
-                  <a href="tel:+628113538188" className="text-sm font-semibold text-foreground hover:text-accent transition-colors">
+                  <a href="tel:+628113538188" className="text-sm font-semibold text-foreground hover:text-accent transition-colors block break-words">
                     +62 811-353-8188 (HR)
                   </a>
                 </div>

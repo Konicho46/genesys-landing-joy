@@ -16,6 +16,8 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [desktopSolutionsOpen, setDesktopSolutionsOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const location = useLocation();
 
   return (
@@ -38,16 +40,26 @@ const Navbar = () => {
 
               if (l.label === "Solutions") {
                 return (
-                  <li key={l.label} className="group/nav py-6">
-                    <button className={`relative flex items-center gap-1 transition-colors group-hover/nav:text-white ${isActive ? "text-accent" : "text-white/80"}`}>
+                  <li 
+                    key={l.label} 
+                    className="py-6 relative"
+                    onMouseEnter={() => setDesktopSolutionsOpen(true)}
+                    onMouseLeave={() => setDesktopSolutionsOpen(false)}
+                  >
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setDesktopSolutionsOpen((prev) => !prev);
+                      }}
+                      className={`relative flex items-center gap-1 transition-colors hover:text-white ${isActive || desktopSolutionsOpen ? "text-accent" : "text-white/80"}`}
+                    >
                       {l.label}
-                      <ChevronDown className="size-3.5 transition-transform duration-300 group-hover/nav:rotate-180" />
-                      <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ease-out ${isActive ? "w-full" : "w-0 group-hover/nav:w-full"}`} />
+                      <ChevronDown className={`size-3.5 transition-transform duration-300 ${desktopSolutionsOpen ? "rotate-180" : ""}`} />
+                      <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ease-out ${isActive ? "w-full" : (desktopSolutionsOpen ? "w-full" : "w-0")}`} />
                     </button>
                     
-                    {/* The wrapper handles hits (no gap), the inner handles visual animation */}
-                    <div className="absolute top-[60px] left-1/2 -translate-x-1/2 pt-[20px] w-max opacity-0 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:pointer-events-auto transition-opacity duration-300">
-                      <div className="translate-y-2 group-hover/nav:translate-y-0 transition-transform duration-300">
+                    <div className={`absolute top-[60px] left-1/2 -translate-x-1/2 pt-[20px] w-max transition-opacity duration-300 ${desktopSolutionsOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+                      <div className={`transition-transform duration-300 ${desktopSolutionsOpen ? "translate-y-0" : "translate-y-2"}`}>
                         <SolutionsMegaMenu />
                       </div>
                     </div>
@@ -119,8 +131,54 @@ const Navbar = () => {
         {open && (
           <div className="lg:hidden pb-4">
             <ul className="flex flex-col gap-3 pb-3 border-b border-white/10">
-              {links.map((l) => (
-                <li key={l.label}>
+              {links.map((l) => {
+                if (l.label === "Solutions") {
+                  return (
+                    <li key={l.label} className="border-b border-white/5 pb-2">
+                      <button
+                        onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+                        className="w-full flex items-center justify-between py-1.5 text-sm transition-colors text-white/90 hover:text-white font-medium"
+                      >
+                        Solutions
+                        <ChevronDown className={`size-4 transition-transform ${mobileSolutionsOpen ? "rotate-180 text-accent" : "text-white/50"}`} />
+                      </button>
+                      
+                      <div className={`overflow-hidden transition-all duration-300 ${mobileSolutionsOpen ? "max-h-[500px] mt-2 opacity-100" : "max-h-0 opacity-0"}`}>
+                        <div className="pl-3 border-l border-white/10 ml-1 space-y-4 pt-1 pb-2">
+                          {/* Software Section */}
+                          <div>
+                            <div className="text-[10px] font-bold uppercase tracking-wider text-accent mb-2">Software Service</div>
+                            <ul className="space-y-2.5">
+                              {["Enterprise Resource Planning", "Supply Chain Management", "Human Resource Management", "Warehouse Management System", "Customer Relationship Management", "Software as a Service (SaaS)"].map((item) => (
+                                <li key={item}>
+                                  <a href="#" className="text-xs text-white/70 hover:text-white transition-colors block" onClick={() => setOpen(false)}>
+                                    {item}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          {/* Hardware Section */}
+                          <div>
+                            <div className="text-[10px] font-bold uppercase tracking-wider text-accent mb-2">Hardware Service</div>
+                            <ul className="space-y-2.5">
+                              {["Hardware Serialization", "Hardware Infrastructure"].map((item) => (
+                                <li key={item}>
+                                  <a href="#" className="text-xs text-white/70 hover:text-white transition-colors block" onClick={() => setOpen(false)}>
+                                    {item}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  )
+                }
+
+                return (
+                 <li key={l.label}>
                   {l.href.startsWith("/#") ? (
                     <a
                       href={l.href.replace("/", "")}
@@ -138,8 +196,9 @@ const Navbar = () => {
                       {l.label}
                     </Link>
                   )}
-                </li>
-              ))}
+                 </li>
+                )
+              })}
             </ul>
             <Link to="/contact" onClick={() => setOpen(false)}>
               <Button

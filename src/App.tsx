@@ -10,6 +10,7 @@ import ContactUs from "./pages/ContactUs.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import "./App.css";
 import Loader from "./components/shared/Loader";
+import ScrollToTop from "./components/shared/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutUs />} />

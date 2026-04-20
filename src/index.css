@@ -9,8 +9,10 @@
 @layer base {
   :root {
     /* Base */
-    --background: 40 33% 98%;            /* #FBFAF6 warm off-white */
-    --foreground: 195 45% 10%;           /* near dark teal text */
+    --background: 40 33% 98%;
+    /* #FBFAF6 warm off-white */
+    --foreground: 195 45% 10%;
+    /* near dark teal text */
 
     --card: 0 0% 100%;
     --card-foreground: 195 45% 10%;
@@ -19,15 +21,18 @@
     --popover-foreground: 195 45% 10%;
 
     /* Brand: dark teal navy */
-    --primary: 188 60% 11%;              /* #0B2A2E */
+    --primary: 188 60% 11%;
+    /* #0B2A2E */
     --primary-foreground: 0 0% 100%;
 
     /* Brand accent: lime green */
-    --accent: 84 78% 56%;                /* #A3E635 */
+    --accent: 84 78% 56%;
+    /* #A3E635 */
     --accent-foreground: 188 60% 11%;
 
     /* Secondary: cyan info card */
-    --secondary: 188 80% 42%;            /* #14B8C4 */
+    --secondary: 188 80% 42%;
+    /* #14B8C4 */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 40 20% 94%;
@@ -43,9 +48,11 @@
     --radius: 1rem;
 
     /* Custom brand surfaces */
-    --surface-dark: 188 55% 11%;         /* dark teal CTA bg */
+    --surface-dark: 188 55% 11%;
+    /* dark teal CTA bg */
     --surface-dark-foreground: 0 0% 100%;
-    --surface-soft: 84 70% 92%;          /* very light lime bg for marquee */
+    --surface-soft: 84 70% 92%;
+    /* very light lime bg for marquee */
     --surface-soft-foreground: 188 60% 11%;
     --info-card: 188 80% 42%;
     --dark-card: 195 35% 14%;
@@ -92,59 +99,64 @@
 }
 
 @layer base {
-  * { @apply border-border; }
-  
-  html { 
-    scroll-behavior: smooth; 
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    @apply overflow-x-hidden;
     /* Firefox */
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--accent)) hsl(var(--muted));
   }
-  
+
   /* Webkit Browsers (Chrome, Edge, Safari) */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
+
   ::-webkit-scrollbar-track {
     background: hsl(var(--muted) / 0.5);
     border-radius: 999px;
     border: 1.5px solid hsl(var(--border));
     margin-block: 4px;
   }
+
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--accent));
     border-radius: 999px;
-    /* Trick: negative border bikin thumb "lebih lebar" dari track-nya */
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     background-clip: padding-box;
-    box-shadow:
-      0 0 0 1.5px hsl(var(--accent) / 0.25),
-      inset 0 1px 0 hsl(var(--accent) / 0.4),
-      inset 0 -1px 0 hsl(var(--accent) / 0.15);
     min-height: 40px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--accent) / 0.85);
+    border: 3px solid transparent;
     background-clip: padding-box;
-    box-shadow:
-      0 0 0 2px hsl(var(--accent) / 0.35),
-      inset 0 1px 0 hsl(var(--accent) / 0.5),
-      inset 0 -1px 0 hsl(var(--accent) / 0.2);
   }
+
   ::-webkit-scrollbar-thumb:active {
     background: hsl(var(--accent) / 0.95);
     background-clip: padding-box;
   }
+
   ::-webkit-scrollbar-corner {
     background: transparent;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   }
-  h1, h2, h3, h4, h5 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     @apply tracking-tight;
   }
@@ -158,17 +170,35 @@
     background-size: 36px 36px, 72px 72px;
     background-position: 0 0, 18px 18px;
   }
-  .text-balance { text-wrap: balance; }
-  .shadow-card { box-shadow: var(--shadow-card); }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
-  .shadow-elev { box-shadow: var(--shadow-elev); }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-elev {
+    box-shadow: var(--shadow-elev);
+  }
 }
 
 /* Marquee */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
+
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
