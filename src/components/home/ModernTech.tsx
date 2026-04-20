@@ -32,17 +32,19 @@ const items = [
 ];
 
 const ModernTech = () => {
-  const { ref, className } = useReveal({ variant: "flip-y" });
+  const { ref, className } = useReveal({ 
+    variant: "flip-y",
+    threshold: 0.05,  
+    delay: 0,
+  });
 
   return (
     <section ref={ref} className={`py-20 lg:py-28 ${className}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-6 items-stretch">
 
-          {/* LEFT: header + cards */}
           <div className="lg:col-span-7 flex flex-col gap-5">
 
-            {/* Header — sekarang di dalam kolom kiri */}
             <div>
               <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
                 Grow &amp; Development

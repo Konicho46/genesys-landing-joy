@@ -8,7 +8,7 @@ interface UseRevealOptions {
   variant?: RevealVariant;
   delay?: number;
   threshold?: number;
-  initialVisible?: boolean; // untuk Hero / above-the-fold
+  initialVisible?: boolean;
 }
 
 export function useReveal({
@@ -24,13 +24,20 @@ export function useReveal({
     let timeoutId: ReturnType<typeof setTimeout>;
 
     if (initialVisible) {
-      // langsung animasi dengan delay kecil biar keliatan
       timeoutId = setTimeout(() => setVisible(true), 80 + delay);
       return () => clearTimeout(timeoutId);
     }
 
     const el = ref.current;
     if (!el) return;
+
+    // ✅ Cek apakah elemen sudah visible saat mount (misal pas refresh di tengah halaman)
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (alreadyVisible) {
+      timeoutId = setTimeout(() => setVisible(true), delay);
+      return () => clearTimeout(timeoutId);
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -39,7 +46,10 @@ export function useReveal({
           observer.unobserve(el);
         }
       },
-      { threshold }
+      { 
+        threshold,
+        rootMargin: "0px 0px -50px 0px" // ✅ trigger lebih awal sebelum benar-benar masuk viewport
+      }
     );
 
     observer.observe(el);
